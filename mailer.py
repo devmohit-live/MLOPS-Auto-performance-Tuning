@@ -4,6 +4,11 @@ Github: devmohit-live
 
 '''
 
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
 def mailer():
     sender_email = "sender"
     receiver_email = "receiver"
