@@ -4,16 +4,16 @@ Github: devmohit-live
 
 '''
 
+
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
 
 def mailer():
     sender_email = "sender"
     receiver_email = "receiver"
     # password = getpass.getpass()
-    password = 'senders_pass'
+    password = 'password'
 
     message = MIMEMultipart("alternative")
     message["Subject"] = "Model Built Successfully"
@@ -49,7 +49,7 @@ def mailer():
             server.sendmail(
                 sender_email, receiver_email, message.as_string()
             )
-    except e:
+    except :
         print("Some error ocurred in mailer ! ",e)
 print("Mail sent succesfully!")
 
