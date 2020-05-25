@@ -38,6 +38,7 @@ num_classes = y_test.shape[1]
 with open('data') as f:
   data=f.read().split('\n')
   accuracy=data[0]
+  accuracy=accuracy[:2]
   iterator=data[1]
   print(accuracy,iterator)
 
@@ -63,16 +64,14 @@ if int(accuracy)>95:
   print('Model is already optimized')
 else:
   model = create_model(int(iterator))
-  model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=3)
+  model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=1)
   # Finding the accuracy score
   scores = model.evaluate(X_test, y_test, verbose=0)
   acc_score=scores[1]*100
-  acc_score=acc_score
-  print(acc_score)
-  print(type(acc_score))
-  print(iterator)
-  print(type(iterator))
-with open('data','w') as fl:
-  fl.write(str(acc_score)+'\n')
-  fl.write(str(int(iterator)+1)+'\n')
+  
+with open('accuracy','w') as ac:
+  ac.write(str(acc_score))
+
+with  open('iter','w') as it: 
+  it.write(str(int(iterator)+1))
 
